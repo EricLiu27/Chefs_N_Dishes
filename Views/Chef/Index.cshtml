@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Heading";
+}
+@using Microsoft.EntityFrameworkCore;
+@inject MyContext _context
+@model List<Chef>
+
+<div class="text-center">
+    <h2 class="display-4">Check out our Roster of Chefs!</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col"># of Dishes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Chef ch in Model)
+            {
+                <tr>
+                    <th scope="row">@ch.FirstName @ch.LastName</th>
+                    <td>@ch.Age()</td>
+                    <td>@{
+                            int num = _context.Chefs.Include(c => c.Dishes).Single(c => c.ChefId == ch.ChefId).Dishes.Count;
+                            @num
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

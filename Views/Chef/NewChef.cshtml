@@ -1,0 +1,30 @@
+@model Chef
+
+@{
+    ViewData["Title"] = "New Chef";
+    Layout = "_Heading";
+}
+
+<h1 class="container text-center w-25">Add A Chef!</h1>
+<form asp-action="CreateChef" asp-controller="Chef" method="post" class=" text-center shadow p-3 rounded">
+    <div class=" col-md-4 text-center me-2">
+        <div class="mb-3 text-center">
+            <label asp-for="FirstName"></label>
+            <input class="form-control" asp-for="FirstName">
+            <span class="text-danger" asp-validation-for="FirstName"></span>
+        </div>
+        <div class=" mb-3 text-center">
+            <label asp-for="LastName"></label>
+            <input class="form-control" asp-for="LastName">
+            <span class="text-danger" asp-validation-for="LastName"></span>
+        </div>
+        <div class="mb-3 text-center">
+            <label asp-for="DateOfBirth"># of DateOfBirth:</label>
+            <input class="form-control" asp-for="DateOfBirth">
+            <span class="text-danger" asp-validation-for="DateOfBirth"></span>
+        </div>
+        <button class="btn btn-primary">Add Chef</button>
+    </div>
+    </div>
+    </div>
+</form>
